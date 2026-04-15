@@ -1,0 +1,53 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Lifecycle Stage',
+    typeNamePlural: 'Lifecycle Stages',
+    title: { type: #STANDARD, label: 'Stage No.', value: 'StageNum' }
+  }
+}
+annotate entity ZCIT_LSTC_22IT115 with
+{
+  @UI.facet: [
+    { id: 'StageDetails', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE,
+      label: 'Stage Details', position: 10 }
+  ]
+
+  @UI: { lineItem: [{position: 10, label: 'Product ID'}],
+         identification: [{position: 10}] }
+  ProductId;
+
+  @UI: { lineItem: [{position: 20, label: 'Stage No.'}],
+         identification: [{position: 20}] }
+  StageNum;
+
+  @UI: { lineItem: [{position: 30, label: 'Stage Name'}],
+         identification: [{position: 30}] }
+  StageName;
+
+  @UI: { lineItem: [{position: 40, label: 'Phase'}],
+         identification: [{position: 40}] }
+  Phase;
+
+  @UI: { lineItem: [{position: 50, label: 'Start Date'}],
+         identification: [{position: 50}] }
+  StartDate;
+
+  @UI: { lineItem: [{position: 60, label: 'End Date'}],
+         identification: [{position: 60}] }
+  EndDate;
+
+  @UI: { lineItem: [{position: 70, label: 'Progress %'}],
+         identification: [{position: 70}] }
+  ProgressPct;
+
+  @UI: { lineItem: [{position: 80, label: 'Owner'}],
+         identification: [{position: 80}] }
+  Owner;
+
+  @UI.hidden: true  ProgUnit;
+  @UI.hidden: true  LocalCreatedBy;
+  @UI.hidden: true  LocalCreatedAt;
+  @UI.hidden: true  LocalLastChangedBy;
+  @UI.hidden: true  LocalLastChangedAt;
+}

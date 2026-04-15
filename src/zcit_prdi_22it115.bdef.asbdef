@@ -1,0 +1,79 @@
+unmanaged implementation in class zbp_cit_prdi_22it115 unique;
+strict ( 2 );
+
+with draft;
+
+define behavior for ZCIT_PRDI_22IT115 alias ProductHdr
+  implementation in class zcit_hndh_22it115 unique
+  draft table zcit_phd_22it115
+  lock master total etag LocalLastChangedAt
+  authorization master ( instance )
+  etag master LocalLastChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+  draft action Activate optimized;
+  draft action Discard;
+
+  field ( mandatory : create ) ProductId;
+  field ( readonly  : update ) ProductId;
+  field ( readonly ) LocalLastChangedAt;
+
+  association _LifecycleStage { create; with draft; }
+
+  mapping for zcit_pro_22it115
+  {
+    ProductId          = productid;
+    ProductName        = productname;
+    Category           = category;
+    LifecycleStatus    = lifecycle_status;
+    LaunchYear         = launch_year;
+    UnitPrice          = unit_price;
+    Currency           = currency;
+    ResponsibleMgr     = responsible_mgr;
+    Description        = description;
+    LocalCreatedBy     = local_created_by;
+    LocalCreatedAt     = local_created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}
+
+define behavior for ZCIT_LSTI_22IT115 alias LifecycleStage
+  implementation in class zcit_hndi_22it115 unique
+  draft table zcit_pit_22it115
+  lock dependent by _ProductHeader
+  authorization dependent by _ProductHeader
+  etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  field ( readonly : update, mandatory : create ) StageNum;
+  field ( readonly ) ProductId;
+
+  association _ProductHeader { with draft; }
+
+  mapping for zcit_lcs_22it115
+  {
+    ProductId          = productid;
+    StageNum           = stagenum;
+    StageName          = stagename;
+    Phase              = phase;
+    StartDate          = start_date;
+    EndDate            = end_date;
+    ProgressPct        = progress_pct;
+    ProgUnit           = prog_unit;
+    Owner              = owner;
+    StageNotes         = stage_notes;
+    LocalCreatedBy     = local_created_by;
+    LocalCreatedAt     = local_created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

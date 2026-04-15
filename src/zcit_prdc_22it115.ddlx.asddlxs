@@ -1,0 +1,63 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Product',
+    typeNamePlural: 'Products',
+    title: { type: #STANDARD, label: 'Product', value: 'ProductId' },
+    description: { type: #STANDARD, value: 'ProductName' }
+  }
+}
+annotate entity ZCIT_PRDC_22IT115 with
+{
+  @UI.facet: [
+    { id: 'ProductDetails', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE,
+      label: 'Product Details', position: 10 },
+    { id: 'LifecycleStages', purpose: #STANDARD, type: #LINEITEM_REFERENCE,
+      label: 'Lifecycle Stages', position: 20, targetElement: '_LifecycleStage' }
+  ]
+
+  @UI: { lineItem: [{position: 10, label: 'Product ID'}],
+         identification: [{position: 10, label: 'Product ID'}],
+         selectionField: [{position: 10}] }
+  ProductId;
+
+  @UI: { lineItem: [{position: 20, label: 'Product Name'}],
+         identification: [{position: 20, label: 'Product Name'}],
+         selectionField: [{position: 20}] }
+  ProductName;
+
+  @UI: { lineItem: [{position: 30, label: 'Category'}],
+         identification: [{position: 30, label: 'Category'}],
+         selectionField: [{position: 30}] }
+  Category;
+
+  @UI: { lineItem: [{position: 40, label: 'Status'}],
+         identification: [{position: 40, label: 'Lifecycle Status'}],
+         selectionField: [{position: 40}] }
+  LifecycleStatus;
+
+  @UI: { lineItem: [{position: 50, label: 'Launch Year'}],
+         identification: [{position: 50, label: 'Launch Year'}] }
+  LaunchYear;
+
+  @UI: { lineItem: [{position: 60, label: 'Unit Price'}],
+         identification: [{position: 60, label: 'Unit Price'}] }
+  UnitPrice;
+
+  @UI: { lineItem: [{position: 70, label: 'Currency'}],
+         identification: [{position: 70, label: 'Currency'}] }
+  Currency;
+
+  @UI: { lineItem: [{position: 80, label: 'Manager'}],
+         identification: [{position: 80, label: 'Responsible Manager'}] }
+  ResponsibleMgr;
+
+  @UI: { identification: [{position: 90, label: 'Description'}] }
+  Description;
+
+  @UI: { identification: [{position: 100, label: 'Created By'}] }
+  LocalCreatedBy;
+
+  @UI: { identification: [{position: 110, label: 'Created At'}] }
+  LocalCreatedAt;
+}

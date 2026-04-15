@@ -1,0 +1,5 @@
+@EndUserText.label: 'PLO Service Definition'
+define service ZCIT_PLSD_22IT115 {
+  expose ZCIT_PRDC_22IT115;
+  expose ZCIT_LSTC_22IT115;
+}
